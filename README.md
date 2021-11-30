@@ -1,11 +1,30 @@
 # Vue2 UI组件库
 
-作者：hais-hbh
+## 介绍
 
-## 安装
+这是我在学习 Vue 的时候，做的一个简单的 UI 框架，希望对你有用
 
-使用本框架请在css中开启border-box
+## 开始使用
 
-```css
-*{ box-sizing: border-box }
+1. 安装
+
+使用本框架前，请在CSS中开启 border-box
+
+```angular2css
+*{box-sizing: border-box;}
+*::before{box-sizing: border-box;}
+*::after{box-sizing: border-box;}
 ```
+
+IE 8 及以上浏览器都支持此样式
+
+## 文档
+
+## 提问
+
+## 变更记录
+
+## 联系方式
+
+## 贡献代码
+
