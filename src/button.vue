@@ -3,9 +3,9 @@
     <svg v-if="icon" class="icon">
       <use :xlink:href=`#icon-${icon}`></use>
     </svg>
-    <div class="content">
+    <span class="content">
       <slot/>
-    </div>
+    </span>
 
   </button>
 </template>
@@ -14,7 +14,13 @@
 export default {
   props: {
     icon: String,
-    iconPosition: String
+    iconPosition: {
+      type: String,
+      default: "left",
+      validator(value) {
+        return !(value !== 'left' && value !== 'right');
+      }
+    }
   }
 }
 </script>
