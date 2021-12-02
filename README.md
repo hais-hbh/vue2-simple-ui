@@ -1,5 +1,8 @@
 # Vue2 UI组件库
 
+[![Build Status](https://app.travis-ci.com/hais-hbh/vue2-simple-ui.svg?branch=main)](https://app.travis-ci.com/hais-hbh/vue2-simple-ui)
+
+
 ## 介绍
 
 这是我在学习 Vue 的时候，做的一个简单的 UI 框架，希望对你有用
