@@ -51,14 +51,21 @@
 <!--    <g-input value="赵六" @change="inputChange"></g-input>-->
 <!--    <g-input v-model="message"></g-input>-->
 <!--    <span>{{message}}</span>-->
-    <g-row>
-        <g-col span="2"></g-col>
-        <g-col span="22"></g-col>
-    </g-row>
-    <g-row>
-        <g-col></g-col>
-        <g-col></g-col>
-    </g-row>
+    <div style="border: 1px solid red">
+        <g-row>
+            <g-col>1</g-col>
+            <g-col>2</g-col>
+        </g-row>
+        <g-row>
+            <g-col span="2">3</g-col>
+            <g-col span="22">4</g-col>
+        </g-row>
+        <g-row gutter="20">
+            <g-col span="2">5</g-col>
+            <g-col offset="2" span="20">6</g-col>
+        </g-row>
+    </div>
+
 </div>
 <script src="./src/app.js"></script>
 </body>
