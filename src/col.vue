@@ -45,7 +45,7 @@ export default {
       return [
           ...this.createClasses({span, offset}),
           ...this.createClasses(ipad, 'ipad-'),
-          ...this.createClasses(narrowPc, 'narrow-pc'),
+          ...this.createClasses(narrowPc, 'narrow-pc-'),
           ...this.createClasses(pc, 'pc-'),
           ...this.createClasses(widePc, 'wide-pc-')
       ]
