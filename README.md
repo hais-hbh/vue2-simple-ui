@@ -1,7 +1,6 @@
 # Vue2 UI组件库
 
-[![Build Status](https://app.travis-ci.com/hais-hbh/vue2-simple-ui.svg?branch=main)](https://app.travis-ci.com/hais-hbh/vue2-simple-ui)
-
+[![Build Status](https://app.travis-ci.com/hais-hbh/vue2-simple-ui.svg?branch=master)](https://app.travis-ci.com/hais-hbh/vue2-simple-ui)
 
 ## 介绍
 
