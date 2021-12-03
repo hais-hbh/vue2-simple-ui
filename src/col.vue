@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="[`col-${span}`]">
+  <div class="col" :class="span && `col-${span}`" >
     <slot></slot>
   </div>
 </template>
@@ -7,10 +7,7 @@
 export default {
   name: "g-col",
   props:{
-    span:{
-      type: [Number, String],
-      default: 24
-    }
+    span: [Number, String]
   }
 }
 </script>
