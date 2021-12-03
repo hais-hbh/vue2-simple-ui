@@ -5,8 +5,12 @@
 </template>
 <script>
 export default {
+  name: "g-col",
   props:{
-    span:[Number, String]
+    span:{
+      type: [Number, String],
+      default: 12
+    }
   }
 }
 </script>

@@ -6,6 +6,7 @@
 <script>
 import "./customIcon"
 export default {
+  name: "g-icon",
   props: {
     name: String
   }

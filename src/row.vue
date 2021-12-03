@@ -5,7 +5,9 @@
 </template>
 
 <script>
-
+export default {
+  name: "g-row"
+}
 </script>
 
 <style lang="scss" scoped>
