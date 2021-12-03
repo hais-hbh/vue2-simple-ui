@@ -9,7 +9,7 @@ export default {
   props:{
     span:{
       type: [Number, String],
-      default: 12
+      default: 24
     }
   }
 }
