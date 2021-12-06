@@ -39,11 +39,8 @@ new Vue({
       this.$toast("我是<strong>加粗文字</strong>", {
        enableHtml: true,
        autoClose: false,
-       position: "bottom"
+       position: "top"
       });
     },
-  },
-  mounted() {
-    this.showToast();
   },
 });
