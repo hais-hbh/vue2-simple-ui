@@ -10,6 +10,11 @@ import Header from "./header.vue";
 import Sider from "./sider.vue";
 import Content from "./content.vue";
 import Footer from "./footer.vue";
+import Tabs from "./tabs.vue";
+import TabsBody from "./tabs-body.vue";
+import TabsHead from "./tabs-head.vue";
+import TabsItem from "./tabs-item.vue";
+import TabsPane from "./tabs-pane.vue";
 
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
@@ -22,6 +27,11 @@ Vue.component("g-footer", Footer);
 Vue.component("g-content", Content);
 Vue.component("g-sider", Sider);
 Vue.component("g-layout", Layout);
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-body', TabsBody)
+Vue.component('g-tabs-head', TabsHead)
+Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-tabs-pane', TabsPane)
 
 import plugin from "./plugin";
 Vue.use(plugin);
@@ -29,18 +39,9 @@ Vue.use(plugin);
 new Vue({
   el: "#app",
   data: {
-    loading1: false,
-    loading2: false,
-    loading3: false,
-    message: "hi",
+    selectedTab: "1"
   },
   methods: {
-    showToast() {
-      this.$toast("我是<strong>加粗文字</strong>", {
-       enableHtml: true,
-       autoClose: false,
-       position: "top"
-      });
-    },
+   
   },
 });
