@@ -18,12 +18,11 @@ export default {
   name: "g-toast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: true,
-    },
-    autoCloseDelay: {
-      type: Number,
+      type: [Boolean, Number],
       default: 5,
+      validator(value) {
+        return value === false || typeof value === 'number'
+      },
     },
     closeButton: {
       type: Object,
@@ -60,7 +59,7 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     updateStyle() {
@@ -88,7 +87,7 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-$animation-duration: .25s;
+$animation-duration: 0.25s;
 @keyframes slide-up {
   0% {
     opacity: 0;
@@ -100,20 +99,20 @@ $animation-duration: .25s;
   }
 }
 @keyframes slide-down {
-  0%{
+  0% {
     opacity: 0;
     transform: translateY(-100%);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateY(0%);
   }
 }
 @keyframes fade-in {
-   0%{
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
