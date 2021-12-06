@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 export default {
   name: "g-tabs",
   props: {
@@ -13,12 +14,22 @@ export default {
       required: true,
     },
     direction: {
-        type: String,
-        default: "horizontal",
-        validator(value) {
-            return ["horizontal", "vertical"].includes(value)
-        }
-    }
+      type: String,
+      default: "horizontal",
+      validator(value) {
+        return ["horizontal", "vertical"].includes(value);
+      },
+    },
+  },
+  data() {
+    return {
+      eventBus: new Vue(),
+    };
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus,
+    };
   },
   created() {
     // this.$emit("update:selected", "xxx");

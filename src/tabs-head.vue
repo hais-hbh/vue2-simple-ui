@@ -7,12 +7,12 @@
 
 <script>
 export default {
-    name: "g-tabs-head"
-}
+  name: "g-tabs-head",
+  inject: ["eventBus"],
+};
 </script>
 
 <style lang="scss" scope>
-.tabs-head{
-    
+.tabs-head {
 }
 </style>
