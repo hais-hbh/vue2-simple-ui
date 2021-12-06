@@ -31,13 +31,14 @@ export default {
       eventBus: this.eventBus,
     };
   },
-  created() {
+  mounted() {
+    this.eventBus.$emit('update:selected', this.selected)
     // this.$emit("update:selected", "xxx");
   },
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .tabs {
 }
 </style>

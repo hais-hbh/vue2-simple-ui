@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-pane">
+  <div class="tabs-pane" :class="classes" v-if="active">
     <slot></slot>
   </div>
 </template>
@@ -14,15 +14,30 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      active: false,
+    };
+  },
+  computed: {
+    classes() {
+      return {
+        active: this.active,
+      };
+    },
+  },
   created() {
     this.eventBus.$on("update:selected", (name) => {
-      console.log(name);
+      this.active = name === this.name;
     });
   },
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .tabs-pane {
+  &.active {
+    background: red;
+  }
 }
 </style>
