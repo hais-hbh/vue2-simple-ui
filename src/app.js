@@ -23,6 +23,9 @@ Vue.component('g-content',Content)
 Vue.component('g-sider',Sider)
 Vue.component('g-layout',Layout)
 
+import plugin from './plugin'
+Vue.use(plugin)
+
 new Vue({
     el: '#app',
     data: {
@@ -32,8 +35,8 @@ new Vue({
         message: 'hi'
     },
     methods: {
-        inputChange(e) {
-            console.log(e.target.value);
+        showToast() {
+            this.$toast("我是 message")
         }
     }
 })
