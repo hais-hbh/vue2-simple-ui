@@ -26,7 +26,7 @@ describe("Toast", () => {
         done();
       });
     });
-    it("接收closeButton", () => {
+    it("接收closeButton", (done) => {
       const callback = sinon.fake();
       const Constructor = Vue.extend(Toast);
       const vm = new Constructor({
@@ -37,31 +37,34 @@ describe("Toast", () => {
           },
         },
       }).$mount();
-      const closeButton = vm.$el.querySelector(".close")
-      expect(closeButton.textContent.trim()).to.eq("关闭吧")
-      closeButton.click()
-      expect(callback).to.have.been.called
+      const closeButton = vm.$el.querySelector(".close");
+      expect(closeButton.textContent.trim()).to.eq("关闭吧");
+      setTimeout(() => {
+        closeButton.click();
+        expect(callback).to.have.been.called;
+        done();
+      }, 200);
     });
     it("接收enableHtml", () => {
       const Constructor = Vue.extend(Toast);
       const vm = new Constructor({
         propsData: {
-          enableHtml: true
-        }
-      })
-      vm.$slots.default = ['<strong id="test">hi</strong>']
+          enableHtml: true,
+        },
+      });
+      vm.$slots.default = ['<strong id="test">hi</strong>'];
       vm.$mount();
-      const strong = vm.$el.querySelector("#test")
-      expect(strong).to.exist
-    })
+      const strong = vm.$el.querySelector("#test");
+      expect(strong).to.exist;
+    });
     it("接受position", () => {
       const Constructor = Vue.extend(Toast);
       const vm = new Constructor({
         propsData: {
-          position: "bottom"
-        }
-      }).$mount()
-      expect(vm.$el.classList.contains("position-bottom")).to.eq(true)
-    })
+          position: "bottom",
+        },
+      }).$mount();
+      expect(vm.$el.classList.contains("position-bottom")).to.eq(true);
+    });
   });
 });
