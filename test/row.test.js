@@ -9,7 +9,7 @@ describe('Col', () => {
     it('存在.', () => {
         expect(Row).to.exist
     })
-    it('可以接收gutter', () => {
+    it('可以接收gutter', (done) => {
        Vue.component('g-row', Row)
         Vue.component('g-col', Col)
         const div = document.createElement('div')
