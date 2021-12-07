@@ -37,30 +37,25 @@ export default {
       document.body.appendChild(contentWrapper);
       const { left, top, height, width } =
         triggerWrapper.getBoundingClientRect();
-      this.position === "top" &&
-        (() => {
-          contentWrapper.style.left = left + window.scrollX + "px";
-          contentWrapper.style.top = top + window.scrollY + "px";
-        })();
-      this.position === "bottom" &&
-        (() => {
-          contentWrapper.style.left = left + window.scrollX + "px";
-          contentWrapper.style.top = top + height + window.scrollY + "px";
-        })();
-      this.position === "left" &&
-        (() => {
-          contentWrapper.style.left = left + window.scrollX + "px";
-          const { height: height2 } = contentWrapper.getBoundingClientRect();
-          contentWrapper.style.top =
-            top - (height2 - height) / 2 + window.scrollY + "px";
-        })();
-      this.position === "right" &&
-        (() => {
-          contentWrapper.style.left = left + window.scrollX + width + "px";
-          const { height: height2 } = contentWrapper.getBoundingClientRect();
-          contentWrapper.style.top =
-            top - (height2 - height) / 2 + window.scrollY + "px";
-        })();
+      const { height: height2 } = contentWrapper.getBoundingClientRect();
+      // 表驱动编程
+      const positions = {
+        top: { top: top + window.scrollY, left: left + window.scrollX },
+        bottom: {
+          top: top + height + window.scrollY,
+          left: left + window.scrollX,
+        },
+        left: {
+          top: top - (height2 - height) / 2 + window.scrollY,
+          left: left + window.scrollX,
+        },
+        right: {
+          top: top - (height2 - height) / 2 + window.scrollY,
+          left: left + window.scrollX + width,
+        },
+      };
+      contentWrapper.style.top = positions[this.position].top + "px"
+      contentWrapper.style.left = positions[this.position].left + "px"
     },
     onClickDocument(e) {
       if (
@@ -174,21 +169,21 @@ $border-radius: 4px;
       left: calc(100% - 1px);
     }
   }
-    &.position-right {
-      margin-left: 10px;
-      &::before,
-      &::after {
-        right: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      &::before {
-        border-right-color: black;
-      }
-      &::after {
-        border-right-color: white;
-        right: calc(100% - 1px);
-      }
+  &.position-right {
+    margin-left: 10px;
+    &::before,
+    &::after {
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
     }
+    &::before {
+      border-right-color: black;
+    }
+    &::after {
+      border-right-color: white;
+      right: calc(100% - 1px);
+    }
+  }
 }
 </style>
