@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div
       class="content-wrapper"
       v-if="visible"
@@ -30,6 +30,29 @@ export default {
         return ["top", "bottom", "left", "right"].includes(value);
       },
     },
+    trigger: {
+      type: String,
+      default: "click",
+      validator(value) {
+        return ["click", "hover"].includes(value);
+      },
+    },
+  },
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.popover.addEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
+    }
+  },
+  destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.popover.removeEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.removeEventListener("mouseenter", this.open);
+      this.$refs.popover.removeEventListener("mouseleave", this.close);
+    }
   },
   methods: {
     positionContent() {
@@ -54,8 +77,8 @@ export default {
           left: left + window.scrollX + width,
         },
       };
-      contentWrapper.style.top = positions[this.position].top + "px"
-      contentWrapper.style.left = positions[this.position].left + "px"
+      contentWrapper.style.top = positions[this.position].top + "px";
+      contentWrapper.style.left = positions[this.position].left + "px";
     },
     onClickDocument(e) {
       if (

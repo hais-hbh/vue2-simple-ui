@@ -29,7 +29,7 @@
       body {
         font-size: var(--font-size);
       }
-      #app{
+      #app {
         padding-top: 100px;
         padding-left: 100px;
       }
@@ -37,30 +37,59 @@
   </head>
   <body>
     <div id="app">
-      <g-popover position="top">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <g-button>top</g-button>
-      </g-popover>
-      <g-popover position="bottom">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <g-button>bottom</g-button>
-      </g-popover>
-      <g-popover position="left">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <g-button>left</g-button>
-      </g-popover>
-      <g-popover position="right">
-        <template slot="content">
-          <div>popover内容</div>
-        </template>
-        <g-button>right</g-button>
-      </g-popover>
+      <div>
+        <g-popover position="top">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>top</g-button>
+        </g-popover>
+        <g-popover position="bottom">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>bottom</g-button>
+        </g-popover>
+        <g-popover position="left">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>left</g-button>
+        </g-popover>
+        <g-popover position="right">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>right</g-button>
+        </g-popover>
+      </div>
+
+      <div style="padding-top: 100px;">
+        <g-popover position="top" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>top</g-button>
+        </g-popover>
+        <g-popover position="bottom" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>bottom</g-button>
+        </g-popover>
+        <g-popover position="left" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>left</g-button>
+        </g-popover>
+        <g-popover position="right" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <g-button>right</g-button>
+        </g-popover>
+      </div>
     </div>
     <script src="./src/app.js"></script>
   </body>
