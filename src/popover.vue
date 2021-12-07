@@ -162,6 +162,7 @@ $border-radius: 4px;
     }
     &::before {
       border-top-color: black;
+      border-bottom: none;
       top: 100%;
     }
     &::after {
@@ -177,6 +178,7 @@ $border-radius: 4px;
     }
     &::before {
       border-bottom-color: black;
+      border-top: none;
       bottom: 100%;
     }
     &::after {
@@ -195,6 +197,7 @@ $border-radius: 4px;
     }
     &::before {
       border-left-color: black;
+      border-right: none;
     }
     &::after {
       border-left-color: white;
@@ -211,6 +214,7 @@ $border-radius: 4px;
     }
     &::before {
       border-right-color: black;
+      border-left: none;
     }
     &::after {
       border-right-color: white;
