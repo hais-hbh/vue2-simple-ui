@@ -15,6 +15,7 @@ import TabsBody from "./tabs-body.vue";
 import TabsHead from "./tabs-head.vue";
 import TabsItem from "./tabs-item.vue";
 import TabsPane from "./tabs-pane.vue";
+import Popover from "./popover.vue";
 
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
@@ -27,11 +28,12 @@ Vue.component("g-footer", Footer);
 Vue.component("g-content", Content);
 Vue.component("g-sider", Sider);
 Vue.component("g-layout", Layout);
-Vue.component('g-tabs', Tabs)
-Vue.component('g-tabs-body', TabsBody)
-Vue.component('g-tabs-head', TabsHead)
-Vue.component('g-tabs-item', TabsItem)
-Vue.component('g-tabs-pane', TabsPane)
+Vue.component("g-tabs", Tabs);
+Vue.component("g-tabs-body", TabsBody);
+Vue.component("g-tabs-head", TabsHead);
+Vue.component("g-tabs-item", TabsItem);
+Vue.component("g-tabs-pane", TabsPane);
+Vue.component("g-popover", Popover);
 
 import plugin from "./plugin";
 Vue.use(plugin);
@@ -39,9 +41,7 @@ Vue.use(plugin);
 new Vue({
   el: "#app",
   data: {
-    selectedTab: "3"
+    selectedTab: "3",
   },
-  methods: {
-   
-  },
+  methods: {},
 });
