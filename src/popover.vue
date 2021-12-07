@@ -120,6 +120,14 @@ export default {
 <style lang="scss" scoped>
 $border-color: #333;
 $border-radius: 4px;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .popover {
   display: inline-block;
   vertical-align: top;
@@ -131,6 +139,7 @@ $border-radius: 4px;
   border-radius: $border-radius;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   background: white;
+  animation: fade-in .7s;
 
   padding: 0.5em 1em;
   max-width: 20em;
