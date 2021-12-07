@@ -32,13 +32,16 @@ export default {
     };
   },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
-    // this.$emit("update:selected", "xxx");
+    this.$children.forEach((vm) => {
+      vm.$options.name === "g-tabs-head" &&
+        vm.$children.forEach((vmChild) => {
+          vmChild.$options.name === "g-tabs-item" &&
+            vmChild.name === this.selected &&
+            this.eventBus.$emit("update:selected", this.selected, vmChild);
+        });
+    });
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.tabs {
-}
-</style>
+<style lang="scss" scoped></style>
