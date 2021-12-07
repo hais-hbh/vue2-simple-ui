@@ -32,6 +32,10 @@ export default {
     };
   },
   mounted() {
+    this.$children.length === 0 &&
+      (() => {
+       console && console.warn && console.warn("tabs没有子组件g-tabs-head或g-tabs-body");
+      })();
     this.$children.forEach((vm) => {
       vm.$options.name === "g-tabs-head" &&
         vm.$children.forEach((vmChild) => {
