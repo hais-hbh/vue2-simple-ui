@@ -37,17 +37,29 @@
   </head>
   <body>
     <div id="app">
-      <g-popover>
+      <g-popover position="top">
         <template slot="content">
-          <div>popover内容popover内容popover内容popover内容popover内容popover内容</div>
+          <div>popover内容</div>
         </template>
-        <g-button>click</g-button>
+        <g-button>top</g-button>
       </g-popover>
-      <g-popover>
+      <g-popover position="bottom">
         <template slot="content">
-          <div>popover内容popover内容popover内容popover内容popover内容popover内容</div>
+          <div>popover内容</div>
         </template>
-        <g-button>click</g-button>
+        <g-button>bottom</g-button>
+      </g-popover>
+      <g-popover position="left">
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <g-button>left</g-button>
+      </g-popover>
+      <g-popover position="right">
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <g-button>right</g-button>
       </g-popover>
     </div>
     <script src="./src/app.js"></script>
