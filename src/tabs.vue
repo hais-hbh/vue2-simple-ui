@@ -31,19 +31,29 @@ export default {
       eventBus: this.eventBus,
     };
   },
+  methods: {
+    checkChildren() {
+      this.$children.length === 0 &&
+        (() => {
+          console &&
+            console.warn &&
+            console.warn("tabs没有子组件g-tabs-head或g-tabs-body");
+        })();
+    },
+    selectTab() {
+      this.$children.forEach((vm) => {
+        vm.$options.name === "g-tabs-head" &&
+          vm.$children.forEach((vmChild) => {
+            vmChild.$options.name === "g-tabs-item" &&
+              vmChild.name === this.selected &&
+              this.eventBus.$emit("update:selected", this.selected, vmChild);
+          });
+      });
+    },
+  },
   mounted() {
-    this.$children.length === 0 &&
-      (() => {
-       console && console.warn && console.warn("tabs没有子组件g-tabs-head或g-tabs-body");
-      })();
-    this.$children.forEach((vm) => {
-      vm.$options.name === "g-tabs-head" &&
-        vm.$children.forEach((vmChild) => {
-          vmChild.$options.name === "g-tabs-item" &&
-            vmChild.name === this.selected &&
-            this.eventBus.$emit("update:selected", this.selected, vmChild);
-        });
-    });
+    this.checkChildren();
+    this.selectTab();
   },
 };
 </script>
