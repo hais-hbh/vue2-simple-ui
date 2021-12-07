@@ -39,8 +39,9 @@
     <div id="app">
       <div>
         <g-popover position="top">
-          <template slot="content">
+          <template slot="content" slot-scope="{close}">
             <div>popover内容</div>
+            <g-button @click="close">close</g-button>
           </template>
           <g-button>top</g-button>
         </g-popover>
@@ -64,7 +65,7 @@
         </g-popover>
       </div>
 
-      <div style="padding-top: 100px;">
+      <div style="padding-top: 100px">
         <g-popover position="top" trigger="hover">
           <template slot="content">
             <div>popover内容</div>
