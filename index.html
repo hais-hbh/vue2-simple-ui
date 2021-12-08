@@ -37,60 +37,11 @@
   </head>
   <body>
     <div id="app">
-      <div>
-        <g-popover position="top">
-          <template slot="content" slot-scope="{close}">
-            <div>popover内容</div>
-            <g-button @click="close">close</g-button>
-          </template>
-          <g-button>top</g-button>
-        </g-popover>
-        <g-popover position="bottom">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>bottom</g-button>
-        </g-popover>
-        <g-popover position="left">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>left</g-button>
-        </g-popover>
-        <g-popover position="right">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>right</g-button>
-        </g-popover>
-      </div>
-
-      <div style="padding-top: 100px">
-        <g-popover position="top" trigger="hover">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>top</g-button>
-        </g-popover>
-        <g-popover position="bottom" trigger="hover">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>bottom</g-button>
-        </g-popover>
-        <g-popover position="left" trigger="hover">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>left</g-button>
-        </g-popover>
-        <g-popover position="right" trigger="hover">
-          <template slot="content">
-            <div>popover内容</div>
-          </template>
-          <g-button>right</g-button>
-        </g-popover>
-      </div>
+      <g-collapse>
+        <g-collapse-item title="标题1">内容1</g-collapse-item>
+        <g-collapse-item title="标题2">内容2</g-collapse-item>
+        <g-collapse-item title="标题3">内容3</g-collapse-item>
+      </g-collapse>
     </div>
     <script src="./src/app.js"></script>
   </body>
