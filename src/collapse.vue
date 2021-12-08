@@ -29,23 +29,33 @@ export default {
   },
   mounted() {
     this.eventBus.$emit("update:selected", this.selected);
-    this.eventBus.$on("update:AddSelected", (name) => {
-      let selectedCopy = JSON.parse(JSON.stringify(this.selected));
-      if (this.single) {
-        selectedCopy = [name];
-      } else {
-        selectedCopy.push(name);
-      }
-      this.$emit("update:selected", selectedCopy);
-      this.eventBus.$emit("update:selected", selectedCopy);
-    });
-    this.eventBus.$on("update:removeSelected", (name) => {
-      let selectedCopy = JSON.parse(JSON.stringify(this.selected));
-      const index = selectedCopy.indexOf(name);
-      selectedCopy.splice(index, 1);
-      this.$emit("update:selected", selectedCopy);
-      this.eventBus.$emit("update:selected", selectedCopy);
-    });
+    this.listenAdd();
+    this.listenRemove();
+  },
+  methods: {
+    doEmit(data) {
+      this.$emit("update:selected", data);
+      this.eventBus.$emit("update:selected", data);
+    },
+    listenAdd() {
+      this.eventBus.$on("update:AddSelected", (name) => {
+        let selectedCopy = JSON.parse(JSON.stringify(this.selected));
+        if (this.single) {
+          selectedCopy = [name];
+        } else {
+          selectedCopy.push(name);
+        }
+        this.doEmit(selectedCopy);
+      });
+    },
+    listenRemove() {
+      this.eventBus.$on("update:removeSelected", (name) => {
+        let selectedCopy = JSON.parse(JSON.stringify(this.selected));
+        const index = selectedCopy.indexOf(name);
+        selectedCopy.splice(index, 1);
+        this.doEmit(selectedCopy);
+      });
+    },
   },
 };
 </script>
