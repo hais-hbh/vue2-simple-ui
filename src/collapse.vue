@@ -14,8 +14,8 @@ export default {
       default: false,
     },
     selected: {
-        type: String | Number,
-    }
+      type: String | Number,
+    },
   },
   data() {
     return {
@@ -29,9 +29,12 @@ export default {
       };
     }
   },
-  mounted(){
-      this.eventBus.$emit("update:selected", this.selected)
-  }
+  mounted() {
+    this.eventBus.$emit("update:selected", this.selected);
+    this.eventBus.$on("update:selected", (name) => {
+      this.$emit("update:selected", name);
+    });
+  },
 };
 </script>
 
