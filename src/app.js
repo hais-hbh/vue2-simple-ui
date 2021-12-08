@@ -16,9 +16,10 @@ import TabsHead from "./tabs-head.vue";
 import TabsItem from "./tabs-item.vue";
 import TabsPane from "./tabs-pane.vue";
 import Popover from "./popover.vue";
-import Collapse from './collapse.vue'
-import CollapseItem from './collapseItem.vue'
-
+import Collapse from "./collapse.vue";
+import CollapseItem from "./collapseItem.vue";
+import Cascader from "./cascader.vue";
+import CascaderItem from "./cascader-item.vue";
 
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
@@ -37,8 +38,10 @@ Vue.component("g-tabs-head", TabsHead);
 Vue.component("g-tabs-item", TabsItem);
 Vue.component("g-tabs-pane", TabsPane);
 Vue.component("g-popover", Popover);
-Vue.component("g-collapse", Collapse)
-Vue.component("g-collapse-item", CollapseItem)
+Vue.component("g-collapse", Collapse);
+Vue.component("g-collapse-item", CollapseItem);
+Vue.component("g-cascader", Cascader);
+Vue.component("g-cascader-item", CascaderItem);
 
 import plugin from "./plugin";
 Vue.use(plugin);
@@ -46,7 +49,30 @@ Vue.use(plugin);
 new Vue({
   el: "#app",
   data: {
-    selectedTab: ["1", "2"],
+    source: [
+      {
+        name: "浙江",
+        children: [
+          {
+            name: "杭州",
+            children: [{ name: "上城" }, { name: "下城" }, { name: "江干" }],
+          },
+          {
+            name: "嘉兴",
+            children: [{ name: "南湖" }, { name: "秀洲" }, { name: "嘉善" }],
+          },
+        ],
+      },
+      {
+        name: "福建",
+        children: [
+          {
+            name: "福州",
+            children: [{ name: "鼓楼" }, { name: "台江" }, { name: "仓山" }],
+          },
+        ],
+      },
+    ],
   },
   methods: {},
 });
