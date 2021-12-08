@@ -1,18 +1,21 @@
 <template>
-  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+  <button
+    class="g-button"
+    :class="{ [`icon-${iconPosition}`]: true }"
+    @click="$emit('click')"
+  >
     <g-icon v-if="icon && !loading" :name="icon" class="icon"></g-icon>
     <g-icon v-if="loading" class="loading icon" name="loading"></g-icon>
     <span class="content">
-      <slot/>
+      <slot />
     </span>
-
   </button>
 </template>
 
 <script>
 import Vue from "vue";
-import Icon from './icon.vue'
-Vue.component('g-icon', Icon)
+import Icon from "./icon.vue";
+Vue.component("g-icon", Icon);
 export default {
   name: "g-button",
   props: {
@@ -21,55 +24,63 @@ export default {
       type: String,
       default: "left",
       validator(value) {
-        return !(value !== 'left' && value !== 'right');
-      }
+        return !(value !== "left" && value !== "right");
+      },
     },
     loading: {
       type: Boolean,
-      default: false
-    }
-  }
-}
+      default: false,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
 @keyframes loading {
-  0%{
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
 .g-button {
   font: inherit;
-  height: var(--button-height);
+  height: $button-height;
   padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background: $button-bg;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
 
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
 
   &:active {
-    background: var(--button-active-bg);
+    background: $button-active-bg;
   }
 
   &:focus {
     outline: none;
   }
 
-  > .icon{
+  > .icon {
     order: 1;
-    margin-right: .3em;
+    margin-right: 0.3em;
   }
-  > .loading{
+  > .loading {
     animation: loading 1s infinite linear;
   }
 
@@ -80,13 +91,12 @@ export default {
   &.icon-right {
     > .icon {
       order: 2;
-      margin-left: .3em;
+      margin-left: 0.3em;
       margin-right: 0;
     }
-    >.content{
+    > .content {
       order: 1;
     }
   }
 }
-
 </style>
