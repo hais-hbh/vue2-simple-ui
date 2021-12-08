@@ -19,7 +19,7 @@ import Popover from "./popover.vue";
 import Collapse from "./collapse.vue";
 import CollapseItem from "./collapseItem.vue";
 import Cascader from "./cascader.vue";
-import CascaderItem from "./cascader-item.vue";
+import CascaderItems from "./cascader-items.vue";
 
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
@@ -41,7 +41,7 @@ Vue.component("g-popover", Popover);
 Vue.component("g-collapse", Collapse);
 Vue.component("g-collapse-item", CollapseItem);
 Vue.component("g-cascader", Cascader);
-Vue.component("g-cascader-item", CascaderItem);
+Vue.component("g-cascader-items", CascaderItems);
 
 import plugin from "./plugin";
 Vue.use(plugin);
