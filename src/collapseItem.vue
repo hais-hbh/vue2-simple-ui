@@ -62,6 +62,7 @@ $border-radius: 4px;
     display: flex;
     align-items: center;
     padding: 0 8px;
+    background: lighten($grey, 8%);
   }
   &:first-child {
     > .title {
