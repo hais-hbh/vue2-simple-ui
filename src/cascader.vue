@@ -1,6 +1,6 @@
 <template>
-  <div class="cascader">
-    <div class="trigger" @click="visiblePopover = !visiblePopover">
+  <div class="cascader" ref="cascader">
+    <div class="trigger" @click="toggle">
       {{ result || "&nbsp;" }}
     </div>
     <div class="popover-wrapper" v-if="visiblePopover">
@@ -90,10 +90,29 @@ export default {
         toUpdate.children = result;
         this.$emit("update:source", copy);
       };
-      if(!lastItem.isLeaf){
+      if (!lastItem.isLeaf) {
         this.loadData && this.loadData(lastItem, updateSource);
       }
-      
+    },
+    onClickDocument(e) {
+      const { cascader } = this.$refs;
+      if (cascader === e.target || cascader.contains(e.target)) {
+        return;
+      }
+      this.close();
+    },
+    open() {
+      this.visiblePopover = true;
+      this.$nextTick(() => {
+        document.addEventListener("click", this.onClickDocument);
+      });
+    },
+    close() {
+      this.visiblePopover = false;
+      document.removeEventListener("click", this.onClickDocument);
+    },
+    toggle() {
+      this.visiblePopover ? this.close() : this.open();
     },
   },
 };
@@ -103,6 +122,7 @@ export default {
 @import "var";
 .cascader {
   position: relative;
+  display: inline-block;
   .trigger {
     height: $input-height;
     display: inline-flex;
