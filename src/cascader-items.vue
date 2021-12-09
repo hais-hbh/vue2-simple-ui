@@ -7,8 +7,8 @@
         :key="index"
         @click="onClickLabel(item)"
       >
-        {{ item.name }}
-        <Icon class="icon" name="right" v-if="item.children"></Icon>
+        <span class="name">{{ item.name }}</span>
+        <Icon class="icon" name="right" v-if="rightArrowVisible(item)"></Icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
@@ -45,18 +45,32 @@ export default {
       type: Array,
       default: () => [],
     },
+    loadData: {
+      type: Function,
+      default: () => {}
+    }
   },
   computed: {
     rightItems() {
-      const currentSelected = this.selected[this.level];
-      if (currentSelected && currentSelected.children) {
-        return currentSelected.children;
-      } else {
-        return null;
+      if (this.selected[this.level]) {
+        const selected = this.items.filter(
+          (item) => item.name === this.selected[this.level].name
+        );
+        if (
+          selected &&
+          selected[0].children &&
+          selected[0].children.length > 0
+        ) {
+          return selected[0].children;
+        }
       }
+      return null;
     },
   },
   methods: {
+    rightArrowVisible(item){
+      return this.loadData ? !item.isLeaf : item.children
+    },
     onClickLabel(item) {
       let copy = JSON.parse(JSON.stringify(this.selected));
       copy[this.level] = item;
@@ -83,11 +97,19 @@ export default {
     overflow: auto;
   }
   .label {
-    padding: 0.3em 1em;
+    padding: 0.5em 1em;
     display: flex;
     align-items: center;
-    .icon {
+    cursor: pointer;
+    &:hover{
+      background: $grey;
+    }
+    > .name{
       margin-left: 1em;
+      user-select: none;
+    }
+    .icon {
+      margin-left: auto;
       transform: scale(0.5);
     }
   }
