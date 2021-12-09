@@ -24,7 +24,7 @@ function ajax(parentId) {
         }
       })
       sucess(result);
-    }, 300);
+    }, 1000);
   });
 }
 export default {

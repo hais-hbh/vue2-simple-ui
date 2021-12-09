@@ -8,7 +8,18 @@
         @click="onClickLabel(item)"
       >
         <span class="name">{{ item.name }}</span>
-        <Icon class="icon" name="right" v-if="rightArrowVisible(item)"></Icon>
+        <span class="icons">
+          <template v-if="item.name === loadingItem.name">
+            <Icon class="loading" name="loading"></Icon>
+          </template>
+          <template v-else>
+            <Icon
+              class="next"
+              name="right"
+              v-if="rightArrowVisible(item)"
+            ></Icon>
+          </template>
+        </span>
       </div>
     </div>
     <div class="right" v-if="rightItems">
@@ -18,6 +29,8 @@
         :height="height"
         :selected="selected"
         @update:selected="onUpdateSelected"
+        :loading-item="loadingItem"
+        :load-data="loadData"
       ></g-cascader-items>
     </div>
   </div>
@@ -47,8 +60,12 @@ export default {
     },
     loadData: {
       type: Function,
-      default: () => {}
-    }
+      default: () => {},
+    },
+    loadingItem: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   computed: {
     rightItems() {
@@ -68,8 +85,8 @@ export default {
     },
   },
   methods: {
-    rightArrowVisible(item){
-      return this.loadData ? !item.isLeaf : item.children
+    rightArrowVisible(item) {
+      return this.loadData ? !item.isLeaf : item.children;
     },
     onClickLabel(item) {
       let copy = JSON.parse(JSON.stringify(this.selected));
@@ -102,16 +119,21 @@ export default {
     align-items: center;
     cursor: pointer;
     white-space: nowrap;
-    &:hover{
+    &:hover {
       background: $grey;
     }
-    > .name{
+    > .name {
       margin-left: 1em;
       user-select: none;
     }
-    .icon {
+    .icons {
       margin-left: auto;
-      transform: scale(0.5);
+      .next{
+        transform: scale(.5);
+      }
+      .loading{
+        animation: loading 2s infinite linear;
+      }
     }
   }
   .right {

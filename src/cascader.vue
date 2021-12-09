@@ -11,6 +11,7 @@
         :items="source"
         :height="popoverHeight"
         :load-data="loadData"
+        :loading-item="loadingItem"
       ></cascader-items>
     </div>
   </div>
@@ -18,7 +19,7 @@
 
 <script>
 import CascaderItems from "./cascader-items.vue";
-import ClickOutside from './click-outside'
+import ClickOutside from "./click-outside";
 export default {
   name: "g-cascader",
   components: { CascaderItems },
@@ -40,10 +41,11 @@ export default {
       default: () => {},
     },
   },
-  directives: {ClickOutside},
+  directives: { ClickOutside },
   data() {
     return {
       visiblePopover: false,
+      loadingItem: {},
     };
   },
   computed: {
@@ -87,13 +89,15 @@ export default {
         }
       };
       const updateSource = (result) => {
+        this.loadingItem = {}
         const copy = JSON.parse(JSON.stringify(this.source));
         const toUpdate = complex(copy, lastItem.id);
         toUpdate.children = result;
         this.$emit("update:source", copy);
       };
-      if (!lastItem.isLeaf) {
-        this.loadData && this.loadData(lastItem, updateSource);
+      if (!lastItem.isLeaf && this.loadData) {
+        this.loadData(lastItem, updateSource);
+        this.loadingItem = lastItem
       }
     },
     open() {
@@ -122,6 +126,7 @@ export default {
     min-width: 10em;
     border: 1px solid $border-color;
     border-radius: $border-radius;
+    background: white;
   }
   .popover-wrapper {
     position: absolute;
@@ -130,6 +135,7 @@ export default {
     background: white;
     display: flex;
     margin-top: 8px;
+    z-index: 1;
     @extend .box-shadow;
   }
 }
