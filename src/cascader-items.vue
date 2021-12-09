@@ -5,14 +5,20 @@
         class="label"
         v-for="(item, index) in items"
         :key="index"
-        @click="leftSelected = item"
+        @click="onClickLabel(item)"
       >
         {{ item.name }}
         <Icon class="icon" name="right" v-if="item.children"></Icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <g-cascader-items :items="rightItems" :height="height"></g-cascader-items>
+      <g-cascader-items
+        :level="level + 1"
+        :items="rightItems"
+        :height="height"
+        :selected="selected"
+        @update:selected="onUpdateSelected"
+      ></g-cascader-items>
     </div>
   </div>
 </template>
@@ -31,19 +37,33 @@ export default {
       type: String,
       default: "",
     },
-  },
-  data() {
-    return {
-      leftSelected: null,
-    };
+    level: {
+      type: Number,
+      default: 0,
+    },
+    selected: {
+      type: Array,
+      default: () => [],
+    },
   },
   computed: {
     rightItems() {
-      if (this.leftSelected && this.leftSelected.children) {
-        return this.leftSelected.children;
+      const currentSelected = this.selected[this.level];
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children;
       } else {
         return null;
       }
+    },
+  },
+  methods: {
+    onClickLabel(item) {
+      let copy = JSON.parse(JSON.stringify(this.selected));
+      copy[this.level] = item;
+      this.$emit("update:selected", copy);
+    },
+    onUpdateSelected(newSelected) {
+      this.$emit("update:selected", newSelected);
     },
   },
 };
