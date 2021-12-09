@@ -1,32 +1,24 @@
-# Vue2 UI组件库
+# vue2-ui
 
-[![Build Status](https://app.travis-ci.com/hais-hbh/vue2-simple-ui.svg?branch=master)](https://app.travis-ci.com/hais-hbh/vue2-simple-ui)
-
-## 介绍
-
-这是我在学习 Vue 的时候，做的一个简单的 UI 框架，希望对你有用
-
-## 开始使用
-
-1. 安装
-
-使用本框架前，请在CSS中开启 border-box
-
-```angular2css
-*{box-sizing: border-box;}
-*::before{box-sizing: border-box;}
-*::after{box-sizing: border-box;}
+## Project setup
+```
+npm install
 ```
 
-IE 8 及以上浏览器都支持此样式
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-## 文档
+### Compiles and minifies for production
+```
+npm run build
+```
 
-## 提问
+### Lints and fixes files
+```
+npm run lint
+```
 
-## 变更记录
-
-## 联系方式
-
-## 贡献代码
-
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

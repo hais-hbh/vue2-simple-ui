@@ -10,7 +10,7 @@ export default {
   inject: ["eventBus"],
   props: {
     name: {
-      type: Number | String,
+      type: [Number, String],
       required: true,
     },
   },

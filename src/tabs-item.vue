@@ -13,7 +13,7 @@ export default {
       default: false,
     },
     name: {
-      type: Number | String,
+      type: [Number, String],
       required: true,
     },
   },
