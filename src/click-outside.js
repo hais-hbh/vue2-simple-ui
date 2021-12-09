@@ -13,7 +13,6 @@ let callbacks = [];
 export default {
   bind: function (el, binding, vnode) {
     callbacks.push({ el, binding, vnode });
-    console.log(callbacks);
   },
 };
 const removeListener = () => {
