@@ -1,6 +1,8 @@
 <template>
   <div class="cascader">
-    <div class="trigger" @click="visiblePopover = !visiblePopover"></div>
+    <div class="trigger" @click="visiblePopover = !visiblePopover">
+      {{ result || "&nbsp;" }}
+    </div>
     <div class="popover-wrapper" v-if="visiblePopover">
       <cascader-items
         class="popover"
@@ -37,6 +39,11 @@ export default {
       visiblePopover: false,
     };
   },
+  computed: {
+    result() {
+      return this.selected.map((item) => item.name).join("/");
+    },
+  },
   methods: {
     onUpdateSelected(newSelected) {
       this.$emit("update:selected", newSelected);
@@ -50,9 +57,13 @@ export default {
 .cascader {
   position: relative;
   .trigger {
-    border: 1px solid black;
-    height: 32px;
-    width: 100px;
+    height: $input-height;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1em;
+    min-width: 10em;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
   }
   .popover-wrapper {
     position: absolute;
@@ -60,6 +71,7 @@ export default {
     left: 0;
     background: white;
     display: flex;
+    margin-top: 8px;
     @extend .box-shadow;
   }
 }
